@@ -1,0 +1,17 @@
+<div class="card mb-5" [ngClass]="course.category == 'BEGINNER'? 'beginner': ''">
+    @if(course.iconUrl) {
+      <img [src]="course.iconUrl" class="card-img-top" alt="course-img">
+    } @else {
+      <h1>No Image Available</h1>
+    }
+    <div class="card-body">
+      <div>
+        <h5 class="card-title text-primary">
+          {{ course.description }}
+        </h5>
+      </div>
+      <p class="card-text">{{ course.longDescription }}</p>
+      <span class="badge bg-secondary">{{course.category}}</span>
+      <button class="btn btn-primary" (click)="onCourseViewed()">View Course</button>
+    </div>
+</div>
