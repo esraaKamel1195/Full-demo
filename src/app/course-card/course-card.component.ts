@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output,  } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ICourse } from '../Interfaces/course';
 
 @Component({
@@ -15,6 +15,14 @@ export class CourseCardComponent {
   }
 
   onCourseViewed() {
+    console.log(this.course);
     this.courseSelected.emit(this.course);
+  }
+
+  cardClasses() {
+    if(this.course.category == 'BEGINNER') {
+      return 'beginner';
+    }
+    return "";
   }
 }
