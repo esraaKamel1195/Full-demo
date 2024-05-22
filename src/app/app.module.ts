@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { ServerComponent } from './server/server.component';
 import { ServerElementComponent } from './server-element/server-element.component';
 import { CourseCardComponent } from './course-card/course-card.component';
+import { CourseImageComponent } from './course-image/course-image.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CourseCardComponent } from './course-card/course-card.component';
     HeaderComponent,
     ServerComponent,
     ServerElementComponent,
-    CourseCardComponent
+    CourseCardComponent,
+    CourseImageComponent
   ],
   imports: [
     BrowserModule,

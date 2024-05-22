@@ -1,9 +1,16 @@
 <div class="card mb-5" [ngClass]="cardClasses()">
-  @if(course.iconUrl) {
-  <img [src]="course.iconUrl" class="card-img-top" alt="course-img">
+  <!-- @if(course.iconUrl) {
+  <img [src]="courseImg" #courseImage class="card-img-top" alt="course-img">
   } @else {
   <h1>No Image Available</h1>
-  }
+  } -->
+
+  <ng-content *ngIf="course.iconUrl; else noImage;"></ng-content>
+
+  <ng-template #noImage>
+    <ng-container *ngTemplateOutlet="noImageTpl;context:{description: course.description}"></ng-container>
+  </ng-template>
+
   <div class="card-body">
     <div>
       <h5 class="card-title text-primary" [ngStyle]="{'text-decoration': 'underline'}">
@@ -13,21 +20,21 @@
     <p class="card-text">{{ course.longDescription }}</p>
     <div class="row">
       @switch (course.category) {
-        @case ('INTERMEDIATE') {
-        <span class="col-5 badge bg-secondary text-center ml-3">{{course.category}}</span>
-        }
-        @case ('BEGINNER') {
-        <span class="col-5 badge bg-success text-center">{{course.category}}</span>
-        }
-        @case ('ADVANCED') {
-        <span class="col-5 badge bg-info text-center">{{course.category}}</span>
-        }
-        @default {
-        <h1 class="col-5">"No Category"</h1>
-        }
-        }
-        <p class="col-2"></p>
-        <button class="col-5 btn btn-primary" (click)="onCourseViewed()">View Course</button>
+      @case ('INTERMEDIATE') {
+      <span class="col-5 badge bg-secondary text-center ml-3">{{course.category}}</span>
+      }
+      @case ('BEGINNER') {
+      <span class="col-5 badge bg-success text-center">{{course.category}}</span>
+      }
+      @case ('ADVANCED') {
+      <span class="col-5 badge bg-info text-center">{{course.category}}</span>
+      }
+      @default {
+      <h1 class="col-5">"No Category"</h1>
+      }
+      }
+      <p class="col-2"></p>
+      <button class="col-5 btn btn-primary" (click)="onCourseViewed()">View Course</button>
     </div>
   </div>
 </div>

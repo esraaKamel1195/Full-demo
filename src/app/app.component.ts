@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { COURSES } from './Data/db-data';
 import { ICourse } from './Interfaces/course';
+import { CourseCardComponent } from './course-card/course-card.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'Full Demo';
   courses: Array<ICourse> = COURSES;
+  @ViewChild('container') container: ElementRef;
+  @ViewChild(CourseCardComponent, { read: ElementRef }) card: CourseCardComponent;
+  @ViewChildren(CourseCardComponent) coursesViewed: QueryList<CourseCardComponent>;
+  
   // coreCourse: ICourse = COURSES[0];
   // rxjsCourse: ICourse = COURSES[1];
   // ngrxCourse: ICourse = COURSES[2];
@@ -31,11 +36,16 @@ export class AppComponent {
   //     content: serverData.serverContent
   //   });
   // }
-  onCourseSelected(course: ICourse) {
-    console.log(course);
+
+  constructor() {
   }
 
-  getRandomDescription () {
-     
+  ngAfterViewInit(): void {
+    console.log('Card on after view init', this.card);
+    console.log('Container on constractor', this.container);
+  }
+
+  onCourseSelected(course: ICourse) {
+    console.log(course);
   }
 }
