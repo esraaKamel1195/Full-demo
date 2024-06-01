@@ -1,63 +1,66 @@
 <main class="main">
   <app-header></app-header>
 
-  <!-- <app-core
-      (serverCreated)="onServerAdded($event)"
-      (bluePrintCreated)="onBluePrintAdded($event)"
-    >
-    </app-core>
+  <div class="container" #container>
+    <div class="row">
+      <app-core (serverCreated)="onServerAdded($event)" (bluePrintCreated)="onBluePrintAdded($event)">
+      </app-core>
+    </div>
     <div class="row">
       <div class="col-xl-12">
+        <button class="btn btn-primary mt-3" (click)="onChangeFirst()">Change First Element</button>
         @for (serverElement of serverElements; track $index) {
-        <app-server-element [element]="serverElement">
+        <app-server-element [element]="serverElement" [name]="serverElement.name">
           <p>
             <strong *ngIf="serverElement.type == 'server'" style="color: red">{{
               serverElement.content
-            }}</strong>
+              }}</strong>
             <em *ngIf="serverElement.type == 'bluePrint'">{{
               serverElement.content
-            }}</em>
+              }}</em>
           </p>
         </app-server-element>
         }
       </div>
-    </div> -->
-
-  <div class="container" #container>
+    </div>
 
     <div class="row mt-4" *ngIf="courses[1] as course">
-        <ng-template #blankImage let-courseName="description">
-          {{courseName}}
-          <p>No Image Available</p>
-        </ng-template>
-  
-        <ng-container *ngTemplateOutlet="blankImage;context:{description: course.description}">
-        </ng-container>
+      <!-- <ng-template #blankImage let-courseName="description">
+        {{courseName}}
+        <p>No Image Available</p>
+      </ng-template>
 
-      <app-course-card class="col col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12" [course]="course"
+      <ng-container *ngTemplateOutlet="blankImage; context:{ description: course.description }">
+      </ng-container> -->
+
+      <!-- <app-course-card class="col col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12" [course]="course"
         (courseSelected)="onCourseSelected($event)" [noImageTpl]="blankImage">
 
         <app-course-image [courseImg]="course.iconUrl"></app-course-image>
 
-      </app-course-card>
+      </app-course-card> -->
     </div>
 
-    <!-- <div class="row mt-4">
+    <div class="row mt-4">
       @for( course of courses; track course.id;
       let index = $index; let count =
       $count; let first = $first; let last = $last; let even = $even; let odd =
-      $odd) { -->
-    <!-- @if(index % 2 == 0) { -->
-    <!-- {{ index }} -->
-    <!-- <app-course-card class="col col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12" #course[course.id] [course]="course"
-        (courseSelected)="onCourseSelected($event)">
-        <img [src]="course.iconUrl" class="card-img-top" alt="course-img">
-      </app-course-card> -->
-    <!-- } -->
-    <!-- } @empty {
+      $odd) {
+      <!-- @if(index % 2 == 0) {
+      {{ index }} -->
+      <div class="col col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-3">
+        <app-course-card #highlighter="highlight" appHighlight (toggleHighLight)="onToggle($event)"
+          [isHighlighted]="true" [course]="course" (courseSelected)="onCourseSelected($event)">
+          <app-course-image [courseImg]="course.iconUrl" (dblclick)="highlighter.toggle($event)"></app-course-image>
+          <h6 class="ms-3">Total lession: 20</h6>
+          <h6 class="ms-3">Total lecture: 10</h6>
+        </app-course-card>
+      </div>
+      <!-- } -->
+      } @empty {
       <h1>No Courses Found</h1>
-      } -->
-    <!-- </div> -->
+      }
+    </div>
   </div>
 </main>
 

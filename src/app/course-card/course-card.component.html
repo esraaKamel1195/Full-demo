@@ -1,4 +1,4 @@
-<div class="card mb-5" [ngClass]="cardClasses()">
+<div class="card" [ngClass]="cardClasses()">
   <!-- @if(course.iconUrl) {
   <img [src]="courseImg" #courseImage class="card-img-top" alt="course-img">
   } @else {
@@ -8,32 +8,31 @@
   <ng-content *ngIf="course.iconUrl; else noImage;"></ng-content>
 
   <ng-template #noImage>
-    <ng-container *ngTemplateOutlet="noImageTpl;context:{description: course.description}"></ng-container>
+    <ng-container *ngTemplateOutlet="noImageTpl; context:{description: course.description}"></ng-container>
   </ng-template>
 
   <div class="card-body">
-    <div>
-      <h5 class="card-title text-primary" [ngStyle]="{'text-decoration': 'underline'}">
-        {{ course.description }}
-      </h5>
-    </div>
-    <p class="card-text">{{ course.longDescription }}</p>
+    <h5 class="card-title text-primary" [ngStyle]="{'text-decoration': 'underline'}">
+      {{ course.description }}
+    </h5>
+    <p class="card-text" style="height: 70px; overflow: hidden;">{{ course.longDescription }}</p>
+    <h5 appBasicHighlight [defaultColor]="'blue'" [highlightColor]="'green'">This is highlight directive</h5>
     <div class="row">
       @switch (course.category) {
       @case ('INTERMEDIATE') {
-      <span class="col-5 badge bg-secondary text-center ml-3">{{course.category}}</span>
+      <span class="col-5 badge bg-secondary text-center ms-2">{{course.category}}</span>
       }
       @case ('BEGINNER') {
-      <span class="col-5 badge bg-success text-center">{{course.category}}</span>
+      <span class="col-5 badge bg-success text-center ms-2">{{course.category}}</span>
       }
       @case ('ADVANCED') {
-      <span class="col-5 badge bg-info text-center">{{course.category}}</span>
+      <span class="col-5 badge bg-info text-center ms-2">{{course.category}}</span>
       }
       @default {
-      <h1 class="col-5">"No Category"</h1>
+      <h1 class="col-5 ms-2">"No Category"</h1>
       }
       }
-      <p class="col-2"></p>
+      <p class="col-1"></p>
       <button class="col-5 btn btn-primary" (click)="onCourseViewed()">View Course</button>
     </div>
   </div>

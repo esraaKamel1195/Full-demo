@@ -1,1 +1,15 @@
-<p>core works!</p>
+<div class="main">
+  <div class="container">
+    <h4>Add new server or blueprint</h4>
+    <form>
+      <div class="row">
+        <label class="mb-1">Server Name</label>
+        <input type="text" class="mb-3" name="name" [(ngModel)]="name">
+        <label class="mb-1">Server Content</label>
+        <textarea type="text" rows="3" class="mb-3" name="content" [(ngModel)]="content"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3 me-3" (click)="onServerCreated()">Add Server</button>
+      <button type="submit" class="btn btn-success mt-3" (click)="onBluePrintCreated()">Add Server blueprint</button>
+    </form>
+  </div>
+</div>
