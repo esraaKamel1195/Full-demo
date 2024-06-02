@@ -7,11 +7,13 @@
       </app-core>
     </div>
     <div class="row">
-      <div class="col-xl-12">
-        <button class="btn btn-primary mt-3" (click)="onChangeFirst()">Change First Element</button>
+      <div class="col-xl-12 mt-3">
+        <button class="btn btn-primary me-3" (click)="onChangeFirst()">Change First Element</button>
+        <button class="btn btn-success" (click)="onChangeDestroy()">Change First Destory</button>
+
         @for (serverElement of serverElements; track $index) {
         <app-server-element [element]="serverElement" [name]="serverElement.name">
-          <p>
+          <p #contentTag>
             <strong *ngIf="serverElement.type == 'server'" style="color: red">{{
               serverElement.content
               }}</strong>

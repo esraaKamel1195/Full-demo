@@ -6,9 +6,9 @@ import { Component, Input, OnDestroy } from '@angular/core';
   styleUrl: './course-image.component.css'
 })
 export class CourseImageComponent implements OnDestroy {
-  @Input({required: false}) courseImg: string;
+  @Input({ required: false }) courseImg: string;
 
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
 }

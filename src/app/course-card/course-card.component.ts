@@ -41,7 +41,7 @@ export class CourseCardComponent
   images: QueryList<CourseImageComponent>;
 
   ngOnInit(): void {
-    console.log('ngOnInit from course card component');
+    // console.log('ngOnInit from course card component');
     // throw new Error('Method not implemented.');
   }
 
@@ -51,7 +51,7 @@ export class CourseCardComponent
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges from course card component', changes);
+    // console.log('ngOnChanges from course card component', changes);
     // throw new Error('Method not implemented.');
   }
 
@@ -74,7 +74,7 @@ export class CourseCardComponent
   }
 
   onCourseViewed() {
-    console.log(this.course);
+    // console.log(this.course);
     this.courseSelected.emit(this.course);
   }
 

@@ -23,13 +23,12 @@ import { CourseCardComponent } from './course-card/course-card.component';
 })
 export class AppComponent
   implements
-    OnInit,
-    OnChanges,
-    AfterViewInit,
-    DoCheck,
-    AfterViewChecked,
-    OnDestroy
-{
+  OnInit,
+  OnChanges,
+  AfterViewInit,
+  DoCheck,
+  AfterViewChecked,
+  OnDestroy {
   title = 'Full Demo';
   courses: Array<ICourse> = COURSES;
   @ViewChild('container') container: ElementRef;
@@ -47,10 +46,10 @@ export class AppComponent
     { type: 'bluePrint', name: 'Server Test', content: 'This Is Test' },
   ];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
-    console.log('from ngOnInit function');
+    // console.log('from ngOnInit function');
   }
 
   onServerAdded(serverData: { name: string; content: string }) {
@@ -62,22 +61,26 @@ export class AppComponent
   }
 
   onBluePrintAdded(serverData: { name: string; content: string }) {
-    console.log('From onBluePrintAdded', serverData);
+    // console.log('From onBluePrintAdded', serverData);
     this.serverElements.push({
       type: 'bluePrint',
       name: serverData.name,
       content: serverData.content,
     });
 
-    console.log('From onBluePrintAdded after Add Server Elements', this.serverElements);
+    // console.log('From onBluePrintAdded after Add Server Elements', this.serverElements);
   }
 
   onChangeFirst() {
-    this.serverElements[0].name = "Changed !!";
+    this.serverElements.length > 0? this.serverElements[0].name = "Changed !!" : null;
+  }
+
+  onChangeDestroy() {
+    this.serverElements?.splice(0, 1);
   }
 
   ngAfterViewInit(): void {
-    console.log('from ngAfterViewInit function');
+    // console.log('from ngAfterViewInit function');
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -86,17 +89,17 @@ export class AppComponent
   }
 
   ngAfterViewChecked(): void {
-    console.log('from ngAfterViewChecked function');
+    // console.log('from ngAfterViewChecked function');
     // throw new Error('Method not implemented.');
   }
 
   ngDoCheck(): void {
-    console.log('from ngDoCheck function');
+    // console.log('from ngDoCheck function');
     // throw new Error('Method not implemented.');
   }
 
   onCourseSelected(course: ICourse) {
-    console.log(course);
+    // console.log(course);
   }
 
   onToggle(isHighlighted: boolean) {
