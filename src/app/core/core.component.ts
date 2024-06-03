@@ -14,8 +14,8 @@ import {
   styleUrl: './core.component.css',
 })
 export class CoreComponent implements OnInit, OnChanges, OnDestroy {
-  name: string = 'test';
-  content: string = 'test content';
+  name: string = '';
+  content: string = '';
 
   @Output() serverCreated: EventEmitter<{ name: string; content: string }> =
     new EventEmitter<{ name: string; content: string }>();

@@ -15,6 +15,7 @@ import {
 import { COURSES } from './Data/db-data';
 import { ICourse } from './Interfaces/course';
 import { CourseCardComponent } from './course-card/course-card.component';
+import { AccountService } from './services/account.service';
 
 @Component({
   selector: 'app-root',
@@ -37,20 +38,29 @@ export class AppComponent
   @ViewChildren(CourseCardComponent)
   coursesViewed: QueryList<CourseCardComponent>;
 
-  coreCourse: ICourse = COURSES[0];
-  rxjsCourse: ICourse = COURSES[1];
-  ngrxCourse: ICourse = COURSES[2];
-
-  serverElements: Array<{ type: string, name: string, content: string }> = [
+  serverElements: Array<{ type: string; name: string; content: string }> = [
     { type: 'server', name: 'Server Test', content: 'This Is Test' },
     { type: 'bluePrint', name: 'Server Test', content: 'This Is Test' },
   ];
 
-  constructor() { }
+  accounts = [];
+
+  constructor(
+    private accountService: AccountService
+  ) { }
 
   ngOnInit(): void {
     // console.log('from ngOnInit function');
+    this.accounts = this.accountService.accounts;
   }
+
+  // onAccountAdded(newAccount: { name: string, status: string }) {
+  //   this.accounts.push(newAccount);
+  // }
+
+  // onStatusChanged(updatedInfo: { id: number, newStatus: string }) {
+  //   this.accounts[updatedInfo.id].status = updatedInfo.newStatus;
+  // }
 
   onServerAdded(serverData: { name: string; content: string }) {
     this.serverElements.push({
@@ -72,10 +82,12 @@ export class AppComponent
   }
 
   onChangeFirst() {
-    this.serverElements.length > 0? this.serverElements[0].name = "Changed !!" : null;
+    this.serverElements.length > 0
+      ? (this.serverElements[0].name = 'Changed !!')
+      : null;
   }
 
-  onChangeDestroy() {
+  onDestroyFirst() {
     this.serverElements?.splice(0, 1);
   }
 
@@ -109,4 +121,5 @@ export class AppComponent
   ngOnDestroy(): void {
     // throw new Error('Method not implemented.');
   }
+
 }

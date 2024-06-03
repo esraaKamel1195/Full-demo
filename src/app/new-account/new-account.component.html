@@ -1,0 +1,33 @@
+<div class="row mt-3">
+  <div class="col-md-12 col-md-offest-2">
+    <div class="form-group mb-3">
+      <label for="name" class="form-label">Account Name: </label>
+      <input
+        type="text"
+        name=""
+        id=""
+        class="form-control"
+        #accountName
+        placeholder="Please enter account name here !"
+        aria-describedby="helpId"
+      />
+      <!-- <small id="helpId" class="text-muted">Help text</small> -->
+    </div>
+
+    <div class="form-group mb-3 col-md-offest-2">
+      <label for="" class="form-label">Name</label>
+      <select class="form-control" #status>
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+        <option value="hidden">Hidden</option>
+      </select>
+      <!-- <small id="helpId" class="text-muted">Help text</small> -->
+    </div>
+    <button
+      class="btn btn-primary"
+      (click)="onCreateAccount(accountName.value, status.value)"
+    >
+      Add Account
+    </button>
+  </div>
+</div>

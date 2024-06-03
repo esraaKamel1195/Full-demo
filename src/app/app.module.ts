@@ -14,6 +14,8 @@ import { BasicHighlightDirective } from './directives/basic-highlight.directive'
 import { HighlightDirective } from './directives/highlight.directive';
 import { Comp1Component } from './comp1/comp1.component';
 import { Comp2Component } from './comp2/comp2.component';
+import { AccountComponent } from './account/account.component';
+import { NewAccountComponent } from './new-account/new-account.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { Comp2Component } from './comp2/comp2.component';
     BasicHighlightDirective,
     HighlightDirective,
     Comp1Component,
-    Comp2Component
+    Comp2Component,
+    AccountComponent,
+    NewAccountComponent
   ],
   imports: [
     BrowserModule,
