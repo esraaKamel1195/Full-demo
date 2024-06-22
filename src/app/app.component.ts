@@ -16,6 +16,7 @@ import { COURSES } from './Data/db-data';
 import { ICourse } from './Interfaces/course';
 import { CourseCardComponent } from './course-card/course-card.component';
 import { AccountService } from './services/account.service';
+import { EmployeeService } from './services/employee.service';
 
 @Component({
   selector: 'app-root',
@@ -44,14 +45,20 @@ export class AppComponent
   ];
 
   accounts = [];
+  employeeActivated: boolean = false;
 
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private employeeService: EmployeeService
   ) { }
 
   ngOnInit(): void {
     // console.log('from ngOnInit function');
     this.accounts = this.accountService.accounts;
+    this.employeeService.activatedEmitter.subscribe((data) => {
+      this.employeeActivated = data;
+    })
+
   }
 
   // onAccountAdded(newAccount: { name: string, status: string }) {
