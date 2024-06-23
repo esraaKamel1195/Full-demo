@@ -1,0 +1,34 @@
+<div class="container">
+  <br />
+  <br />
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <label for="">Search:</label>
+      <input type="text" class="form-control" [(ngModel)]="filteredStatus" />
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-primary" (click)="onAddServer()">Add New Server</button>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let server of servers | filter : filteredStatus: 'status'"
+          [ngClass]="getStatusClasses(server)"
+        >
+          <span class="badge bg-primary float-end">{{ server.status }}</span>
+          <strong>{{ server.name | shorten : 8 }}</strong> |
+          {{ server.budget | currency : "EUR" }} |
+          {{ server.instanceType | uppercase }} |
+          {{ server.started | date : "mediumDate" }} |
+          {{ server.serverLoadingTime | number : "1.2-3" }} S
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+App status is {{ appStatus | async }}

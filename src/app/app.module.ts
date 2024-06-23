@@ -18,6 +18,9 @@ import { AccountComponent } from './account/account.component';
 import { NewAccountComponent } from './new-account/new-account.component';
 import { MainComponent } from './main/main.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { ShortenPipe } from './pipes/shorten.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { EmployeeComponent } from './employee/employee.component';
     AccountComponent,
     NewAccountComponent,
     MainComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    PipesComponent,
+    ShortenPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
