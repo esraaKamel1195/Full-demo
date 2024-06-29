@@ -1,75 +1,102 @@
 <main class="main">
+  <!--************************************* Header Part ***********************************************-->
   <app-header></app-header>
 
+
+  <!--************************************* Directives & View (child & childern) Practice ***********************************************-->
   <!-- <div class="container" #container>
     <div class="row">
-      <app-core (serverCreated)="onServerAdded($event)" (bluePrintCreated)="onBluePrintAdded($event)">
+      <app-core
+        (serverCreated)="onServerAdded($event)"
+        (bluePrintCreated)="onBluePrintAdded($event)"
+      >
       </app-core>
     </div>
     <div class="row">
       <div class="col-xl-12 mt-3">
-        <button class="btn btn-primary me-3" (click)="onChangeFirst()">Change First Element</button>
-        <button class="btn btn-success" (click)="onDestroyFirst()">Change First Destory</button>
+        <button class="btn btn-primary me-3" (click)="onChangeFirst()">
+          Change First Element
+        </button>
+        <button class="btn btn-success" (click)="onDestroyFirst()">
+          Change First Destory
+        </button>
 
         @for (serverElement of serverElements; track $index) {
-        <app-server-element [element]="serverElement" [name]="serverElement.name">
+        <app-server-element
+          [element]="serverElement"
+          [name]="serverElement.name"
+        >
           <p #contentTag>
             <strong *ngIf="serverElement.type == 'server'" style="color: red">{{
               serverElement.content
-              }}</strong>
+            }}</strong>
             <em *ngIf="serverElement.type == 'bluePrint'">{{
               serverElement.content
-              }}</em>
+            }}</em>
           </p>
         </app-server-element>
         }
       </div>
-    </div> -->
+    </div>
 
-  <!-- <div class="row mt-4" *ngIf="courses[1] as course">
-       <ng-template #blankImage let-courseName="description">
-        {{courseName}}
+    <div class="row mt-4" *ngIf="courses[1] as course">
+      <ng-template #blankImage let-courseName="description">
+        {{ courseName }}
         <p>No Image Available</p>
       </ng-template>
 
-      <ng-container *ngTemplateOutlet="blankImage; context:{ description: course.description }">
-      </ng-container> -->
+      <ng-container
+        *ngTemplateOutlet="
+          blankImage;
+          context: { description: course.description }
+        "
+      >
+      </ng-container>
 
-  <!-- <app-course-card class="col col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12" [course]="course"
-        (courseSelected)="onCourseSelected($event)" [noImageTpl]="blankImage">
-
+      <app-course-card
+        class="col col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12"
+        [course]="course"
+        (courseSelected)="onCourseSelected($event)"
+        [noImageTpl]="blankImage"
+      >
         <app-course-image [courseImg]="course.iconUrl"></app-course-image>
-
-      </app-course-card> -->
-  <!-- </div>
+      </app-course-card>
+    </div>
 
     <div class="row mt-4">
-      @for( course of courses; track course.id;
-      let index = $index; let count =
+      @for( course of courses; track course.id; let index = $index; let count =
       $count; let first = $first; let last = $last; let even = $even; let odd =
-      $odd) { -->
-  <!-- @if(index % 2 == 0) {
-      {{ index }} -->
-  <!-- <div class="col col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-3">
-        <app-course-card #highlighter="highlight" appHighlight (toggleHighLight)="onToggle($event)"
-          [isHighlighted]="true" [course]="course" (courseSelected)="onCourseSelected($event)">
-          <app-course-image [courseImg]="course.iconUrl" (dblclick)="highlighter.toggle($event)"></app-course-image>
+      $odd) { @if(index % 2 == 0) {
+      {{ index }}
+      <div class="col col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-3">
+        <app-course-card
+          #highlighter="highlight"
+          appHighlight
+          (toggleHighLight)="onToggle($event)"
+          [isHighlighted]="true"
+          [course]="course"
+          (courseSelected)="onCourseSelected($event)"
+        >
+          <app-course-image
+            [courseImg]="course.iconUrl"
+            (dblclick)="highlighter.toggle($event)"
+          ></app-course-image>
           <h6 class="ms-3">Total lession: 20</h6>
           <h6 class="ms-3">Total lecture: 10</h6>
         </app-course-card>
-      </div> -->
-  <!-- } -->
-  <!-- } @empty {
+      </div>
+      } } @empty {
       <h1>No Courses Found</h1>
-      } -->
-  <!-- </div>
+      }
+    </div>
   </div> -->
+
+  <!--************************************* Services & Enhancements Practice ***********************************************-->
   <!-- <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-8">
-        <app-new-account
-        ></app-new-account>
-        <hr/>
+        <app-new-account></app-new-account>
+        <hr />
         <app-account
           *ngFor="let acc of accounts; let i = index"
           [account]="acc"
@@ -79,6 +106,7 @@
     </div>
   </div> -->
 
+  <!--************************************* Dealing with observable & subject Practice ***********************************************-->
   <!-- <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-8">
@@ -89,15 +117,19 @@
         <a [routerLink]="['employee', 2]">Employee 2</a>
       </div>
     </div>
-    <hr/>
+    <hr />
     <div class="row">
       <div class="col-md-8 col-md-offset-8">
         <router-outlet></router-outlet>
       </div>
     </div>
   </div>
-  <hr>
+  <hr />
   <p *ngIf="employeeActivated">Activated !</p> -->
 
-  <app-pipes></app-pipes>
+  <!--**************************************** Pipes Practice *************************************************-->
+  <!-- <app-pipes></app-pipes> -->
+
+  <!--************************************* Http request in details Practice ***********************************************-->
+  <app-posts></app-posts>
 </main>

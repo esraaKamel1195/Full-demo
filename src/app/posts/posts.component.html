@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-3">
+      <form #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+        <div class="form-group mb-3">
+          <label for="title" class="form-label">Title: </label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            class="form-control"
+            required
+            ngModel
+            aria-describedby="helpId"
+          />
+          <!-- <small id="helpId" class="text-muted">Help text</small> -->
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="content" class="form-label">Content: </label>
+          <input
+            type="text"
+            name="content"
+            id="content"
+            class="form-control"
+            required
+            ngModel
+            aria-describedby="helpId"
+          />
+          <!-- <small id="helpId" class="text-muted">Help text</small> -->
+        </div>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="postForm.invalid"
+        >
+          Create Post
+        </button>
+      </form>
+
+      <hr />
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-success float-end" (click)="onFetchPosts()">
+            Get All Posts
+          </button>
+        </div>
+      </div>
+
+      <br />
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-danger float-end" (click)="onClearPosts()">
+            Clear Posts
+          </button>
+        </div>
+      </div>
+
+      <br />
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <p *ngIf="loadedPosts.length < 1 && !isLoaded">No Posts Available</p>
+        </div>
+        <ul class="list-group" *ngIf="loadedPosts.length >= 1 && !isLoaded">
+          <li class="list-group-item mb-3" *ngFor="let post of loadedPosts">
+            <h1>{{ post.title }}</h1>
+            <p>{{ post.content }}</p>
+          </li>
+        </ul>
+        <p *ngIf="isLoaded && !error">Loading............................</p>
+        <div class="alert alert-danger" *ngIf="error">
+          <h1>An error occured...................</h1>
+          {{ error }}
+          <button class="btn btn-danger float-end" (click)="onHandleError()">Go To Home</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

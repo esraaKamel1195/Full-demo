@@ -12,8 +12,6 @@ import { CourseCardComponent } from './course-card/course-card.component';
 import { CourseImageComponent } from './course-image/course-image.component';
 import { BasicHighlightDirective } from './directives/basic-highlight.directive';
 import { HighlightDirective } from './directives/highlight.directive';
-import { Comp1Component } from './comp1/comp1.component';
-import { Comp2Component } from './comp2/comp2.component';
 import { AccountComponent } from './account/account.component';
 import { NewAccountComponent } from './new-account/new-account.component';
 import { MainComponent } from './main/main.component';
@@ -21,6 +19,10 @@ import { EmployeeComponent } from './employee/employee.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
+import { PostsComponent } from './posts/posts.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptorService } from './interceptors/auth.interceptor.service';
+import { LoggingInterceptor } from './interceptors/logging.interceptor.service';
 
 @NgModule({
   declarations: [
@@ -33,22 +35,25 @@ import { FilterPipe } from './pipes/filter.pipe';
     CourseImageComponent,
     BasicHighlightDirective,
     HighlightDirective,
-    Comp1Component,
-    Comp2Component,
     AccountComponent,
     NewAccountComponent,
     MainComponent,
     EmployeeComponent,
     PipesComponent,
     ShortenPipe,
-    FilterPipe
+    FilterPipe,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
