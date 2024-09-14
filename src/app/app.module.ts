@@ -23,6 +23,7 @@ import { PostsComponent } from './posts/posts.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorService } from './interceptors/auth.interceptor.service';
 import { LoggingInterceptor } from './interceptors/logging.interceptor.service';
+import { TemplateDrivenFormsComponent } from './tdf/template-driven-forms/template-driven-forms.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor.service';
     PipesComponent,
     ShortenPipe,
     FilterPipe,
-    PostsComponent
+    PostsComponent,
+    TemplateDrivenFormsComponent
   ],
   imports: [
     BrowserModule,

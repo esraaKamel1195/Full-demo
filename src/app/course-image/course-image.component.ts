@@ -1,4 +1,6 @@
 import { Component, Input, OnDestroy } from '@angular/core';
+
+
 @Component({
   selector: 'app-course-image',
   templateUrl: './course-image.component.html',

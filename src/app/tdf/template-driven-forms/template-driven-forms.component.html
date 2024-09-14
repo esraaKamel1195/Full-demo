@@ -1,0 +1,44 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
+    <div id="user-data">
+      <div class="form-group">
+        <br />
+        <label for="username">username</label>
+        <input
+          type="text"
+          id="username"
+          #username
+          class="form-control"
+          name="username"
+          ngModel
+        />
+        {{ username.className }}
+      </div>
+      <br />
+      <button class="btn btn-primary" type="button">
+        Suggest an user name
+      </button>
+      <br />
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input
+          type="text"
+          id="email"
+          class="form-control"
+          name="email"
+          ngModel
+        />
+      </div>
+      <br />
+      <div class="form-group">
+        <label for="secret">Secret Question</label>
+        <select id="secret" class="form-control" name="secret" ngModel>
+          <option value="doctor">Your first doctor ?</option>
+          <option value="teacher">Your first teacher ?</option>
+        </select>
+      </div>
+      <br />
+      <button class="btn btn-success" type="submit">Submit</button>
+    </div>
+  </form>
+</div>
