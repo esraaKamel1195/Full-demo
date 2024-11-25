@@ -15,7 +15,7 @@
     <h5 class="card-title text-primary" [ngStyle]="{'text-decoration': 'underline'}">
       {{ course.description }}
     </h5>
-    <p class="card-text" style="height: 70px; overflow: hidden;">{{ course.longDescription }}</p>
+    <p class="card-text">{{ course.longDescription }}</p>
     <h5 appBasicHighlight [defaultColor]="'blue'" [highlightColor]="'green'">This is highlight directive</h5>
     <div class="row">
       @switch (course.category) {

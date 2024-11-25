@@ -11,8 +11,8 @@ export class BasicHighlightDirective {
   @HostBinding('style.color') color: string;
 
   constructor(
-    private element: ElementRef,
-    private render: Renderer2
+    private element?: ElementRef,
+    private render?: Renderer2
   ) {
     // this.element.nativeElement.style.backgroundColor = 'lightblue';
     // this.render.setStyle(this.element.nativeElement, 'background-color', 'lightgray');

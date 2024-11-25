@@ -1,3 +1,8 @@
-.beginner{
+.beginner {
   background-color: lightsalmon;
+}
+
+.card-text {
+  height: 70px;
+  overflow: hidden;
 }

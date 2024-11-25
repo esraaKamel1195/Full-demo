@@ -4,11 +4,19 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-      <label for="">Search:</label>
-      <input type="text" class="form-control" [(ngModel)]="filteredStatus" />
+      <label for="filteredStatus">Search:</label>
+      <input
+        type="text"
+        class="form-control"
+        name="filteredStatus"
+        placeholder="filteredStatus"
+        [(ngModel)]="filteredStatus"
+      />
     </div>
     <div class="col-md-3">
-      <button class="btn btn-primary" (click)="onAddServer()">Add New Server</button>
+      <button class="btn btn-primary" (click)="onAddServer()">
+        Add New Server
+      </button>
     </div>
   </div>
   <br />
@@ -17,7 +25,7 @@
       <ul class="list-group">
         <li
           class="list-group-item"
-          *ngFor="let server of servers | filter : filteredStatus: 'status'"
+          *ngFor="let server of servers | filter : filteredStatus : 'status'"
           [ngClass]="getStatusClasses(server)"
         >
           <span class="badge bg-primary float-end">{{ server.status }}</span>
