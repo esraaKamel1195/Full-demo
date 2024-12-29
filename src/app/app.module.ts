@@ -25,6 +25,8 @@ import { AuthInterceptorService } from './interceptors/auth.interceptor.service'
 import { LoggingInterceptor } from './interceptors/logging.interceptor.service';
 import { TemplateDrivenFormsComponent } from './tdf/template-driven-forms/template-driven-forms.component';
 import { ReactiveFormsComponent } from './reactive-form/reactive-forms.component';
+import { AlertComponent } from './alert/alert.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { ReactiveFormsComponent } from './reactive-form/reactive-forms.component
     FilterPipe,
     PostsComponent,
     TemplateDrivenFormsComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
+    AlertComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

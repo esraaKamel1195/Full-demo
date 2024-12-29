@@ -1,0 +1,5 @@
+<div class="col-xl-12 col-md-6 offset-3">
+    <app-alert *ngIf="error" [message]="error" (close)="onErrorHandle()"></app-alert>
+</div>
+
+<button class="btn btn-primary" (click)="onRaiseError()">Raise Error</button>
