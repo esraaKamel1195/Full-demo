@@ -11,6 +11,8 @@ import {
   DoCheck,
   AfterViewChecked,
   OnDestroy,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { COURSES } from './Data/db-data';
 import { ICourse } from './Interfaces/course';
@@ -22,6 +24,7 @@ import { EmployeeService } from './services/employee.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent
   implements
@@ -49,7 +52,8 @@ export class AppComponent
 
   constructor(
     private accountService: AccountService,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -58,7 +62,6 @@ export class AppComponent
     this.employeeService.activatedEmitter.subscribe((data) => {
       this.employeeActivated = data;
     })
-
   }
 
   // onAccountAdded(newAccount: { name: string, status: string }) {
@@ -115,6 +118,7 @@ export class AppComponent
   ngDoCheck(): void {
     // console.log('from ngDoCheck function');
     // throw new Error('Method not implemented.');
+    this.cd.markForCheck();
   }
 
   onCourseSelected(course: ICourse) {

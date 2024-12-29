@@ -2,17 +2,16 @@
   <!--************************************* Header Part ***********************************************-->
   <app-header></app-header>
 
-
   <!--************************************* Directives & View (child & childern) Practice ***********************************************-->
-  <!-- <div class="container" #container>
-    <div class="row">
+  <div class="container" #container>
+    <!-- <div class="row">
       <app-core
         (serverCreated)="onServerAdded($event)"
         (bluePrintCreated)="onBluePrintAdded($event)"
       >
       </app-core>
-    </div>
-    <div class="row">
+    </div> -->
+    <!-- <div class="row">
       <div class="col-xl-12 mt-3">
         <button class="btn btn-primary me-3" (click)="onChangeFirst()">
           Change First Element
@@ -37,9 +36,9 @@
         </app-server-element>
         }
       </div>
-    </div>
+    </div> -->
 
-    <div class="row mt-4" *ngIf="courses[1] as course">
+    <!-- <div class="row mt-4" *ngIf="courses[0] as course">
       <ng-template #blankImage let-courseName="description">
         {{ courseName }}
         <p>No Image Available</p>
@@ -61,81 +60,100 @@
       >
         <app-course-image [courseImg]="course.iconUrl"></app-course-image>
       </app-course-card>
-    </div>
-
-    <div class="row mt-4">
-      @for( course of courses; track course.id; let index = $index; let count =
-      $count; let first = $first; let last = $last; let even = $even; let odd =
-      $odd) { @if(index % 2 == 0) {
-      {{ index }}
-      <div class="col col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-3">
-        <app-course-card
-          #highlighter="highlight"
-          appHighlight
-          (toggleHighLight)="onToggle($event)"
-          [isHighlighted]="true"
-          [course]="course"
-          (courseSelected)="onCourseSelected($event)"
-        >
-          <app-course-image
-            [courseImg]="course.iconUrl"
-            (dblclick)="highlighter.toggle($event)"
-          ></app-course-image>
-          <h6 class="ms-3">Total lession: 20</h6>
-          <h6 class="ms-3">Total lecture: 10</h6>
-        </app-course-card>
+    </div> -->
+    <!-- @defer () { -->
+    <!-- @defer (on idle; prefetch on idle) { -->
+    <!-- @defer (on idle; prefetch on timer(10s)) { -->
+    @defer (on viewport; prefetch on idle) {
+    <!-- @defer () { -->
+    <!-- @defer () { -->
+    <!-- @defer () { -->
+      <div class="row mt-4">
+        @for( course of courses; track course.id; let index = $index; let count =
+          $count; let first = $first; let last = $last; let even = $even; let odd =
+          $odd
+        ) {
+          @if(index % 2 == 0) {
+            <!-- {{ index }} -->
+            <div class="col col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-3">
+              <app-course-card
+                #highlighter="highlight"
+                appHighlight
+                (toggleHighLight)="onToggle($event)"
+                [isHighlighted]="true"
+                [course]="course"
+                (courseSelected)="onCourseSelected($event)"
+              >
+                <app-course-image
+                  [courseImg]="course.iconUrl"
+                  (dblclick)="highlighter.toggle($event)"
+                ></app-course-image>
+                <h6 class="ms-3">Total lession: 20</h6>
+                <h6 class="ms-3">Total lecture: 10</h6>
+              </app-course-card>
+            </div>
+          }
+        } @empty {
+          <h1>No Courses Found</h1>
+        }
       </div>
-      } } @empty {
-      <h1>No Courses Found</h1>
-      }
+    }
+    @placeholder (minimum 3s;) {
+      <h2>This is a placeholder heading</h2>
+    }
+    @loading (minimum 3s; after 1s) {
+      <h2>Loading indicator ....</h2>
+    }
+    @error {
+      <h2>Error loading data</h2>
+    }
     </div>
-  </div> -->
 
-  <!--************************************* Services & Enhancements Practice ***********************************************-->
-  <!-- <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-8">
-        <app-new-account></app-new-account>
-        <hr />
-        <app-account
-          *ngFor="let acc of accounts; let i = index"
-          [account]="acc"
-          [id]="i"
-        ></app-account>
+    <!--************************************** Services & Enhancements Practice ***********************************************-->
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-8">
+          <app-new-account></app-new-account>
+          <hr />
+          <app-account
+            *ngFor="let acc of accounts; let i = index"
+            [account]="acc"
+            [id]="i"
+          ></app-account>
+        </div>
       </div>
-    </div>
-  </div> -->
+    </div> -->
 
-  <!--************************************* Dealing with observable & subject Practice ***********************************************-->
-  <!-- <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-8">
-        <a routerLink="/">Home</a>
-        | &nbsp;
-        <a [routerLink]="['employee', 1]">Employee 1</a>
-        | &nbsp;
-        <a [routerLink]="['employee', 2]">Employee 2</a>
+    <!--************************************* Dealing with observable & subject Practice ***********************************************-->
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-8">
+          <a routerLink="/">Home</a>
+          | &nbsp;
+          <a [routerLink]="['employee', 1]">Employee 1</a>
+          | &nbsp;
+          <a [routerLink]="['employee', 2]">Employee 2</a>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-md-8 col-md-offset-8">
+          <router-outlet></router-outlet>
+        </div>
       </div>
     </div>
     <hr />
-    <div class="row">
-      <div class="col-md-8 col-md-offset-8">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-  </div>
-  <hr />
-  <p *ngIf="employeeActivated">Activated !</p> -->
+    <p *ngIf="employeeActivated">Activated !</p> -->
 
-  <!--**************************************** Pipes Practice *************************************************-->
-  <!-- <app-pipes></app-pipes> -->
+    <!--**************************************** Pipes Practice *************************************************-->
+    <!-- <app-pipes></app-pipes> -->
 
-  <!--************************************* Http request in details Practice ***********************************************-->
-  <!-- <app-posts></app-posts> -->
+    <!--**************************************** Http request in details Practice ***********************************************-->
+    <!-- <app-posts></app-posts> -->
 
-  <!--************************************* Template driven forms Practice ***********************************************-->
-  <!-- <app-template-driven-forms></app-template-driven-forms> -->
-  
-  <!--************************************* Reactive forms Practice ***********************************************-->
-  <app-reactive-forms></app-reactive-forms>
+    <!--**************************************** Template driven forms Practice ***********************************************-->
+    <!-- <app-template-driven-forms></app-template-driven-forms> -->
+
+    <!--**************************************** Reactive forms Practice ***********************************************-->
+    <!-- <app-reactive-forms></app-reactive-forms> -->
 </main>

@@ -5,35 +5,57 @@
   <h1>No Image Available</h1>
   } -->
 
-  <ng-content *ngIf="course.iconUrl; else noImage;"></ng-content>
+  <ng-content *ngIf="course.iconUrl; else noImage"></ng-content>
 
+  <label for="title" i18n>Edit Course Title:</label>
+  <input
+    type="text"
+    id="title"
+    placeholder="title"
+    #courseTitle
+    (keyup)="onTitleChanged(courseTitle.value)"
+    [value]="course.description"
+  />
   <ng-template #noImage>
-    <ng-container *ngTemplateOutlet="noImageTpl; context: {description: course.description}"></ng-container>
+    <ng-container
+      *ngTemplateOutlet="
+        noImageTpl;
+        context: { description: course.description }
+      "
+    ></ng-container>
   </ng-template>
 
   <div class="card-body">
-    <h5 class="card-title text-primary" [ngStyle]="{'text-decoration': 'underline'}">
+    <h5
+      class="card-title text-primary"
+      [ngStyle]="{ 'text-decoration': 'underline' }"
+    >
       {{ course.description }}
     </h5>
     <p class="card-text">{{ course.longDescription }}</p>
-    <h5 appBasicHighlight [defaultColor]="'blue'" [highlightColor]="'green'">This is highlight directive</h5>
+    <h5 appBasicHighlight [defaultColor]="'blue'" [highlightColor]="'green'">
+      This is highlight directive
+    </h5>
     <div class="row">
-      @switch (course.category) {
-      @case ('INTERMEDIATE') {
-      <span class="col-5 badge bg-secondary text-center ms-2">{{course.category}}</span>
-      }
-      @case ('BEGINNER') {
-      <span class="col-5 badge bg-success text-center ms-2">{{course.category}}</span>
-      }
-      @case ('ADVANCED') {
-      <span class="col-5 badge bg-info text-center ms-2">{{course.category}}</span>
-      }
-      @default {
+      @switch (course.category) { @case ('INTERMEDIATE') {
+      <span class="col-5 badge bg-secondary text-center ms-2">{{
+        course.category
+      }}</span>
+      } @case ('BEGINNER') {
+      <span class="col-5 badge bg-success text-center ms-2">{{
+        course.category
+      }}</span>
+      } @case ('ADVANCED') {
+      <span class="col-5 badge bg-info text-center ms-2">{{
+        course.category
+      }}</span>
+      } @default {
       <h1 class="col-5 ms-2">"No Category"</h1>
-      }
-      }
+      } }
       <p class="col-1"></p>
-      <button class="col-5 btn btn-primary" (click)="onCourseViewed()">View Course</button>
+      <button class="col-5 btn btn-primary" (click)="onCourseViewed()">
+        View Course
+      </button>
     </div>
   </div>
 </div>

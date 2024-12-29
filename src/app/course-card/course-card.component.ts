@@ -14,7 +14,9 @@ import {
   OnChanges,
   DoCheck,
   SimpleChanges,
-  OnDestroy
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
 } from '@angular/core';
 import { ICourse } from '../Interfaces/course';
 import { CourseImageComponent } from '../course-image/course-image.component';
@@ -22,6 +24,7 @@ import { CourseImageComponent } from '../course-image/course-image.component';
   selector: 'app-course-card',
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CourseCardComponent
   implements
@@ -40,6 +43,10 @@ export class CourseCardComponent
   @ContentChildren(CourseImageComponent)
   images: QueryList<CourseImageComponent>;
 
+  constructor(
+    private cd: ChangeDetectorRef
+  ) {}
+
   ngOnInit(): void {
     // console.log('ngOnInit from course card component');
     // throw new Error('Method not implemented.');
@@ -48,6 +55,7 @@ export class CourseCardComponent
   ngDoCheck(): void {
     // console.log('ngDoCheck from course card component');
     // throw new Error('Method not implemented.');
+    this.cd.markForCheck();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -83,6 +91,10 @@ export class CourseCardComponent
       return 'beginner';
     }
     return '';
+  }
+
+  onTitleChanged(newTitle: string) {
+    this.course.description = newTitle;
   }
 
   ngOnDestroy(): void {
