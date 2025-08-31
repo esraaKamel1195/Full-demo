@@ -1,8 +1,8 @@
 <main class="main">
-  <!--************************************* Header Part ***********************************************-->
+  <!--************************************************ Header Part ***********************************************-->
   <app-header></app-header>
 
-  <!--************************************* Directives & View (child & childern) Practice ***********************************************-->
+  <!--************************************* Directives & View (child & childern) Practice *************************************-->
   <div class="container" #container>
     <!-- <div class="row">
       <app-core
@@ -64,18 +64,18 @@
     <!-- @defer () { -->
     <!-- @defer (on idle; prefetch on idle) { -->
     <!-- @defer (on idle; prefetch on timer(10s)) { -->
-    @defer (on viewport; prefetch on idle) {
+    <!-- @defer (on viewport; prefetch on idle) { -->
     <!-- @defer () { -->
     <!-- @defer () { -->
     <!-- @defer () { -->
-      <div class="row mt-4">
+    <!-- <div class="row mt-4">
         @for( course of courses; track course.id; let index = $index; let count =
           $count; let first = $first; let last = $last; let even = $even; let odd =
           $odd
         ) {
-          @if(index % 2 == 0) {
-            <!-- {{ index }} -->
-            <div class="col col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-3">
+          @if(index % 2 == 0) { -->
+    <!-- {{ index }} -->
+    <!-- <div class="col col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-3">
               <app-course-card
                 #highlighter="highlight"
                 appHighlight
@@ -91,13 +91,13 @@
                 <h6 class="ms-3">Total lession: 20</h6>
                 <h6 class="ms-3">Total lecture: 10</h6>
               </app-course-card>
-            </div>
-          }
+            </div> -->
+    <!-- }
         } @empty {
           <h1>No Courses Found</h1>
-        }
-      </div>
-    }
+        } -->
+    <!-- </div> -->
+    <!-- }
     @placeholder (minimum 3s;) {
       <h2>This is a placeholder heading</h2>
     }
@@ -106,11 +106,11 @@
     }
     @error {
       <h2>Error loading data</h2>
-    }
-    </div>
+    } -->
+  </div>
 
-    <!--************************************** Services & Enhancements Practice ***********************************************-->
-    <!-- <div class="container">
+  <!--**************************************** Services & Enhancements Practice ***********************************************-->
+  <!-- <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-8">
           <app-new-account></app-new-account>
@@ -124,8 +124,8 @@
       </div>
     </div> -->
 
-    <!--************************************* Dealing with observable & subject Practice ***********************************************-->
-    <!-- <div class="container">
+  <!--**************************************** Dealing with observable & subject Practice *******************************************-->
+  <!-- <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-8">
           <a routerLink="/">Home</a>
@@ -145,15 +145,20 @@
     <hr />
     <p *ngIf="employeeActivated">Activated !</p> -->
 
-    <!--**************************************** Pipes Practice *************************************************-->
-    <!-- <app-pipes></app-pipes> -->
+  <!--**************************************** Pipes Practice **********************************************-->
+  <!-- <app-pipes></app-pipes> -->
 
-    <!--**************************************** Http request in details Practice ***********************************************-->
-    <!-- <app-posts></app-posts> -->
+  <!--**************************************** Http request in details Practice ********************************************-->
+  <!-- <app-posts></app-posts> -->
 
-    <!--**************************************** Template driven forms Practice ***********************************************-->
-    <!-- <app-template-driven-forms></app-template-driven-forms> -->
+  <!--**************************************** Template driven forms Practice ***********************************************-->
+  <!-- <app-template-driven-forms></app-template-driven-forms> -->
 
-    <!--**************************************** Reactive forms Practice ***********************************************-->
-    <!-- <app-reactive-forms></app-reactive-forms> -->
+  <!--**************************************** Reactive forms Practice ***********************************************-->
+  <!-- <app-reactive-forms></app-reactive-forms> -->
+  <!--**************************************** Signal deling  ********************************************** -->
+  <h3>{{ derviedCounter() }}</h3>
+  <button class="btn btn-primary" (click)="increment()">Increment Counter</button>
+  <button class="btn btn-success" (click)="multiplierIncrement()">Increment Multiplier</button>
+  <button class="btn" (click)="cleanUp()">Clean up</button>
 </main>
